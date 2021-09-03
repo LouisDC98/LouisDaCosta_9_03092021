@@ -17,7 +17,6 @@ function Score(props) {
             <div className="displayScore">
                 <ResponsiveContainer width={200} height={200}>
                     <RadialBarChart
-                        className="toto"
                         cx="50%"
                         cy="50%"
                         innerRadius="70%"
