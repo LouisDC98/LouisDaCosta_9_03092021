@@ -5,6 +5,10 @@ import SideNav from '../../components/SideNav/SideNav';
 import ResquestBtn from '../../components/RequestBtn/ResquestBtn';
 import Welcome from '../../components/Welcome/Welcome';
 import Tag from '../../components/Tag/Tag';
+import Score from '../../components/Score/Score';
+import BarChart from '../../components/BarChart/BarChart';
+import LineChart from '../../components/LineChart/LineChart';
+import RadarChart from '../../components/RadarChart/RadarChart';
 
 function HomePage() {
     const [userSelect, setUserSelect] = useState(null);
@@ -42,10 +46,21 @@ function HomePage() {
 
                 <main className="shapeMainHomePage">
                     <Welcome user={userSelect} />
-                    <div>
-                        {Object.keys(userSelect.keyData).map((data) => (
-                            <Tag userData={userSelect.keyData} key={data} data={data} />
-                        ))}
+                    <div className="graphHomePage">
+                        <div className="mainGraphHomePage">
+                            <BarChart />
+                            <div className="littlegrapheHomePage">
+                                <LineChart />
+                                <RadarChart />
+                                <Score score={userSelect.todayScore} />
+                            </div>
+                        </div>
+
+                        <div>
+                            {Object.keys(userSelect.keyData).map((data) => (
+                                <Tag userData={userSelect.keyData} key={data} data={data} />
+                            ))}
+                        </div>
                     </div>
                 </main>
             </div>
