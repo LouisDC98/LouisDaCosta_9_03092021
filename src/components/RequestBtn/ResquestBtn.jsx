@@ -1,6 +1,6 @@
 import React from 'react';
-import axios from 'axios';
 import './ResquestBtn.css';
+import { getUserById } from '../../data/API';
 
 function ResquestBtn(props) {
     const { dataUser, toto } = props;
@@ -13,9 +13,7 @@ function ResquestBtn(props) {
             id = 12;
         }
 
-        const baseURL = 'http://localhost:3000/user/';
-
-        axios.get(`${baseURL + id}`).then((response) => {
+        getUserById(id).then((response) => {
             console.log(response.data.data);
             toto(response.data.data);
         });
