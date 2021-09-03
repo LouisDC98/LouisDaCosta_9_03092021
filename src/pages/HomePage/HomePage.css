@@ -1,0 +1,10 @@
+.shapeHomePage {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+}
+
+.shapeMainHomePage {
+    width: 100%;
+    padding: 0 100px;
+}
