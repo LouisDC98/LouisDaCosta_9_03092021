@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import './HomePage.css';
 import SideNav from '../../components/SideNav/SideNav';
 import ResquestBtn from '../../components/RequestBtn/ResquestBtn';
@@ -8,18 +7,16 @@ import Tag from '../../components/Tag/Tag';
 import Score from '../../components/Score/Score';
 import BarChart from '../../components/BarChart/BarChart';
 import LineChart from '../../components/LineChart/LineChart';
-import RadarChart from '../../components/RadarChart/RadarChart';
+import RadarGraph from '../../components/RadarGraph/RadarGraph';
+import { getInitialUser } from '../../data/API';
 
 function HomePage() {
     const [userSelect, setUserSelect] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
 
-    const baseURL = 'http://localhost:3000/user/';
-
     useEffect(() => {
-        axios
-            .get(`${baseURL + 12}`)
+        getInitialUser()
             .then((response) => {
                 setUserSelect(response.data.data);
             })
