@@ -17,5 +17,5 @@ export async function getSessionDuration(id) {
 }
 
 export async function getSessionIntensity(id) {
-    return axios.get(`${'http://localhost:3000/user/' + id + '/average-sessions'}`);
+    return axios.get(`${'http://localhost:3000/user/' + id + '/performance'}`);
 }
