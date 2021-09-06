@@ -1,4 +1,5 @@
 import React from 'react';
+import styled from 'styled-components';
 import './Tag.css';
 import energy from '../../img/energy.svg';
 import protein from '../../img/protein.svg';
@@ -41,18 +42,55 @@ function Tag(props) {
     }
 
     return (
-        <React.Fragment>
-            <div className="shapeTag">
-                <div className={`imgTag ${colorTag}`}>
-                    <img src={imgData} className="iconTag"></img>
-                </div>
-                <div>
-                    <div className="numberTag">{valueData}</div>
-                    <div className="textTag">{textData}</div>
-                </div>
+        <TagShape>
+            <TagImg className={colorTag}>
+                <TagIcon src={imgData}></TagIcon>
+            </TagImg>
+            <div>
+                <TagNumber>{valueData}</TagNumber>
+                <TagText>{textData}</TagText>
             </div>
-        </React.Fragment>
+        </TagShape>
     );
 }
+
+const TagShape = styled.div`
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    height: 60px;
+    width: 194px;
+    background-color: #fbfbfb;
+    border-radius: 5px;
+    padding: 32px;
+    margin: 20px 0;
+`;
+
+const TagImg = styled.div`
+    height: 60px;
+    width: 60px;
+    border-radius: 5px;
+    margin-right: 30px;
+`;
+
+const TagIcon = styled.img`
+    padding: 19px 20px 17px 20px;
+`;
+
+const TagNumber = styled.div`
+    color: #282d30;
+    font-family: Roboto, sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    text-align: start;
+`;
+
+const TagText = styled.div`
+    color: #74798c;
+    font-family: Roboto, sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    text-align: start;
+`;
 
 export default Tag;
