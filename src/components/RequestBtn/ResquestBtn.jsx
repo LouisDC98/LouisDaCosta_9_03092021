@@ -1,9 +1,9 @@
 import React from 'react';
-import './ResquestBtn.css';
+import styled from 'styled-components';
 import { getUserById } from '../../data/API';
 
 function ResquestBtn(props) {
-    const { dataUser, toto } = props;
+    const { dataUser, selectedUser } = props;
 
     const getUser = () => {
         let id = 0;
@@ -15,15 +15,18 @@ function ResquestBtn(props) {
 
         getUserById(id).then((response) => {
             console.log(response.data.data);
-            toto(response.data.data);
+            selectedUser(response.data.data);
         });
     };
 
-    return (
-        <button onClick={getUser} className="btnUser">
-            Change user
-        </button>
-    );
+    return <BtnUser onClick={getUser}>Change user</BtnUser>;
 }
+
+const BtnUser = styled.button`
+    background-color: black;
+    color: white;
+    border: 1px solid white;
+    height: 20px;
+`;
 
 export default ResquestBtn;

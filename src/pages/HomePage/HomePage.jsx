@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import './HomePage.css';
+import styled from 'styled-components';
 import SideNav from '../../components/SideNav/SideNav';
 import ResquestBtn from '../../components/RequestBtn/ResquestBtn';
 import Welcome from '../../components/Welcome/Welcome';
 import Tag from '../../components/Tag/Tag';
 import Score from '../../components/Score/Score';
-import BarChart from '../../components/BarChart/BarChart';
-import LineChart from '../../components/LineChart/LineChart';
+import BarGraph from '../../components/BarGraph/BarGraph';
+import LineGraph from '../../components/LineGraph/LineGraph';
 import RadarGraph from '../../components/RadarGraph/RadarGraph';
 import { getInitialUser } from '../../data/API';
 
@@ -35,34 +35,61 @@ function HomePage() {
         return <div>Erreur</div>;
     } else {
         return (
-            <div className="shapeHomePage">
+            <HomePageShape>
                 <div>
                     <SideNav />
-                    <ResquestBtn dataUser={userSelect} toto={setUserSelect} />
+                    <ResquestBtn dataUser={userSelect} selectedUser={setUserSelect} />
                 </div>
 
-                <main className="shapeMainHomePage">
+                <HomePageMainShape>
                     <Welcome user={userSelect} />
-                    <div className="graphHomePage">
-                        <div className="mainGraphHomePage">
-                            <BarChart />
-                            <div className="littlegrapheHomePage">
-                                <LineChart />
-                                <RadarChart />
+                    <HomePageMainBlock>
+                        <HomePageMainGraph>
+                            <BarGraph selectedUser={userSelect} />
+                            <HomePageLittleGraph>
+                                <LineGraph selectedUser={userSelect} />
+                                <RadarGraph selectedUser={userSelect} />
                                 <Score score={userSelect.todayScore} />
-                            </div>
-                        </div>
+                            </HomePageLittleGraph>
+                        </HomePageMainGraph>
 
                         <div>
                             {Object.keys(userSelect.keyData).map((data) => (
                                 <Tag userData={userSelect.keyData} key={data} data={data} />
                             ))}
                         </div>
-                    </div>
-                </main>
-            </div>
+                    </HomePageMainBlock>
+                </HomePageMainShape>
+            </HomePageShape>
         );
     }
 }
+
+const HomePageShape = styled.div`
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+`;
+
+const HomePageMainShape = styled.main`
+    width: 100%;
+    padding: 0 50px;
+`;
+
+const HomePageMainBlock = styled.div`
+    display: flex;
+    justify-content: space-between;
+`;
+
+const HomePageMainGraph = styled.div`
+    width: 100%;
+`;
+
+const HomePageLittleGraph = styled.div`
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0;
+    width: 835px;
+`;
 
 export default HomePage;
