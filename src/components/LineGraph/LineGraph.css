@@ -1,5 +1,6 @@
 .shapeLineGraph {
-    background-color: yellow;
+    background-color: #FF0000;
     width: 258px;
     height: 263px;
+    border-radius: 5px;
 }
