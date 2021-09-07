@@ -18,10 +18,22 @@ function BarGraph(props) {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
 
+    const CustomTooltip = ({ active, payload }) => {
+        if (active && payload && payload.length) {
+            return (
+                <BarGraphToolTip>
+                    <p>{`${payload[0].value}kg`}</p>
+                    <p>{`${payload[1].value}kCal`}</p>
+                </BarGraphToolTip>
+            );
+        }
+
+        return null;
+    };
+
     useEffect(() => {
         getActivity(selectedUser.id)
             .then((response) => {
-                console.log('Activité', response.data.data);
                 response.data.data.map;
                 setActivity(
                     response.data.data.sessions.map((activity, i) => {
@@ -81,17 +93,7 @@ function BarGraph(props) {
                                 paddingBottom: '30px'
                             }}
                         />
-                        <Tooltip
-                            contentStyle={{
-                                backgroundColor: 'red',
-                                border: 'none'
-                            }}
-                            payload={[
-                                { name: '05-01', value: 12, unit: 'kg' },
-                                { name: '05-01', value: 12, unit: 'kg' }
-                            ]}
-                            labelStyle={{ display: 'none' }}
-                        />
+                        <Tooltip content={<CustomTooltip />} />
                         <Bar
                             dataKey="kilogram"
                             fill="#282D30"
@@ -129,6 +131,14 @@ const BarGraphTitle = styled.p`
     position: absolute;
     left: 25px;
     top: 25px;
+`;
+
+const BarGraphToolTip = styled.div`
+    background-color: #e60000;
+    color: white;
+    padding: 5px;
+    font-size: 14px;
+    text-align: center;
 `;
 
 export default BarGraph;

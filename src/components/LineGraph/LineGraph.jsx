@@ -1,22 +1,39 @@
 import React, { useEffect, useState } from 'react';
-import './LineGraph.css';
+import styled from 'styled-components';
 import { getSessionDuration } from '../../data/API';
-import {
-    LineChart,
-    Line,
-    // XAxis,
-    // YAxis,
-    CartesianGrid,
-    Tooltip,
-    // Legend,
-    ResponsiveContainer
-} from 'recharts';
+import { LineChart, Line, XAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 
 function LineGraph(props) {
     const { selectedUser } = props;
     const [duration, setDuration] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
+
+    const week = {
+        1: 'L',
+        2: 'M',
+        3: 'M',
+        4: 'J',
+        5: 'V',
+        6: 'S',
+        7: 'D'
+    };
+
+    const CustomXaxis = (tick) => {
+        return week[tick];
+    };
+
+    const CustomTooltip = ({ active, payload }) => {
+        if (active && payload && payload.length) {
+            return (
+                <LineGraphToolTip>
+                    <p>{`${payload[0].value}min`}</p>
+                </LineGraphToolTip>
+            );
+        }
+
+        return null;
+    };
 
     useEffect(() => {
         getSessionDuration(selectedUser.id)
@@ -32,44 +49,70 @@ function LineGraph(props) {
             });
     }, [selectedUser]);
 
-    console.log(duration);
-
     if (loading) {
         return <div>Loading</div>;
     } else if (error) {
         return <div>Erreur</div>;
     } else {
         return (
-            <div className="shapeLineGraph">
+            <LineGraphShape>
                 <ResponsiveContainer width="100%" height="100%">
                     <LineChart
                         width={50}
                         height={30}
                         data={duration}
-                        padding={{
-                            top: 5,
-                            right: 30,
-                            left: 20,
-                            bottom: 5
+                        margin={{
+                            top: 100,
+                            bottom: 75
                         }}>
                         <CartesianGrid strokeDasharray="3 3" vertical={false} horizontal={false} />
-                        {/* <XAxis /> */}
-                        {/* <YAxis /> */}
-                        <Tooltip labelStyle={{ display: 'none' }} />
-                        {/* <Legend /> */}
+                        <XAxis
+                            tickFormatter={CustomXaxis}
+                            dataKey="day"
+                            type="category"
+                            axisLine={false}
+                            tickLine={false}
+                            stroke="white"
+                            padding={{ left: 15, right: 15, top: 20 }}
+                        />
+                        <Tooltip content={CustomTooltip} />
                         <Line
                             type="natural"
                             dataKey="sessionLength"
                             stroke="white"
-                            activeDot={{ r: 8 }}
+                            activeDot={{ r: 4 }}
+                            dot={false}
                         />
-                        {/* <Line type="monotone" dataKey="uv" stroke="blue" /> */}
                     </LineChart>
                 </ResponsiveContainer>
-            </div>
-            // <div>coucou</div>
+                <LineGraphTitle>Durée moyenne des sessions</LineGraphTitle>
+            </LineGraphShape>
         );
     }
 }
+
+const LineGraphShape = styled.div`
+    width: 258px;
+    height: 263px;
+    border-radius: 5px;
+    background: linear-gradient(to right, #ff0000 75%, #df0000 25%);
+    position: relative;
+`;
+
+const LineGraphToolTip = styled.div`
+    background-color: white;
+    color: black;
+    padding: 1px 5px;
+    font-size: 14px;
+    text-align: center;
+`;
+
+const LineGraphTitle = styled.div`
+    position: absolute;
+    left: 25px;
+    top: 30px;
+    color: #ffffff90;
+    width: 160px;
+`;
 
 export default LineGraph;
