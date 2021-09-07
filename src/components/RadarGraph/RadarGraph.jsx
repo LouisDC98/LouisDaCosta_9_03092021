@@ -1,13 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import {
-    Radar,
-    RadarChart,
-    PolarGrid,
-    PolarAngleAxis,
-    PolarRadiusAxis,
-    ResponsiveContainer
-} from 'recharts';
+import { Radar, RadarChart, PolarGrid, PolarAngleAxis, ResponsiveContainer } from 'recharts';
 import { getSessionIntensity } from '../../data/API';
 
 function RadarGraph(props) {
@@ -30,6 +23,10 @@ function RadarGraph(props) {
             });
     }, [selectedUser]);
 
+    const CustomPolarAngleAxis = (tick) => {
+        return intensity.kind[tick].charAt(0).toUpperCase() + intensity.kind[tick].slice(1);
+    };
+
     if (loading) {
         return <div>Loading</div>;
     } else if (error) {
@@ -38,10 +35,14 @@ function RadarGraph(props) {
         return (
             <RadarGraphShape>
                 <ResponsiveContainer width="100%" height="90%">
-                    <RadarChart cx={'center'} cy={'center'} outerRadius={100} data={intensity.data}>
-                        <PolarGrid />
-                        <PolarAngleAxis datakey="kind" />
-                        <PolarRadiusAxis tick={false} />
+                    <RadarChart cx={'center'} cy={'center'} outerRadius={80} data={intensity.data}>
+                        <PolarGrid radialLines={false} />
+                        <PolarAngleAxis
+                            tickFormatter={CustomPolarAngleAxis}
+                            dataKey="kind"
+                            stroke="white"
+                            tickLine={false}
+                        />
                         <Radar dataKey="value" fill="red" fillOpacity={0.7} />
                     </RadarChart>
                 </ResponsiveContainer>
