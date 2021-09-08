@@ -8,7 +8,7 @@ import Score from '../../components/Score/Score';
 import BarGraph from '../../components/BarGraph/BarGraph';
 import LineGraph from '../../components/LineGraph/LineGraph';
 import RadarGraph from '../../components/RadarGraph/RadarGraph';
-import { getInitialUser } from '../../data/API';
+import API from '../../data/API';
 
 function HomePage() {
     const [userSelect, setUserSelect] = useState(null);
@@ -16,7 +16,7 @@ function HomePage() {
     const [error, setError] = useState(false);
 
     useEffect(() => {
-        getInitialUser()
+        API.getInitialUser()
             .then((response) => {
                 setUserSelect(response.data.data);
             })

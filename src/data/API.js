@@ -1,21 +1,27 @@
 import axios from 'axios';
 
-export async function getInitialUser() {
-    return axios.get(`${'http://localhost:3000/user/' + 12}`);
+axios.defaults.baseURL = 'http://localhost:3000';
+
+class API {
+    static async getInitialUser() {
+        return axios.get(`/user/${12}`);
+    }
+
+    static async getUserById(id) {
+        return axios.get(`/user/${id}`);
+    }
+
+    static async getActivity(id) {
+        return axios.get(`/user/${id}/activity`);
+    }
+
+    static async getSessionDuration(id) {
+        return axios.get(`/user/${id}/average-sessions`);
+    }
+
+    static async getSessionIntensity(id) {
+        return axios.get(`/user/${id}/performance`);
+    }
 }
 
-export async function getUserById(id) {
-    return axios.get(`${'http://localhost:3000/user/' + id}`);
-}
-
-export async function getActivity(id) {
-    return axios.get(`${'http://localhost:3000/user/' + id + '/activity'}`);
-}
-
-export async function getSessionDuration(id) {
-    return axios.get(`${'http://localhost:3000/user/' + id + '/average-sessions'}`);
-}
-
-export async function getSessionIntensity(id) {
-    return axios.get(`${'http://localhost:3000/user/' + id + '/performance'}`);
-}
+export default API;

@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { getUserById } from '../../data/API';
+import API from '../../data/API';
 
 function ResquestBtn(props) {
     const { dataUser, selectedUser } = props;
@@ -13,7 +13,7 @@ function ResquestBtn(props) {
             id = 12;
         }
 
-        getUserById(id).then((response) => {
+        API.getUserById(id).then((response) => {
             console.log(response.data.data);
             selectedUser(response.data.data);
         });

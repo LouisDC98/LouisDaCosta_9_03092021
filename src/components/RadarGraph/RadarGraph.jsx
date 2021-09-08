@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { Radar, RadarChart, PolarGrid, PolarAngleAxis, ResponsiveContainer } from 'recharts';
-import { getSessionIntensity } from '../../data/API';
+import API from '../../data/API';
+import Format from '../../data/Format';
 
 function RadarGraph(props) {
     const { selectedUser } = props;
@@ -10,9 +11,9 @@ function RadarGraph(props) {
     const [error, setError] = useState(false);
 
     useEffect(() => {
-        getSessionIntensity(selectedUser.id)
+        API.getSessionIntensity(selectedUser.id)
             .then((response) => {
-                setIntensity(response.data.data);
+                setIntensity(Format.intensityFormat(response));
             })
             .catch((error) => {
                 console.log(error);
