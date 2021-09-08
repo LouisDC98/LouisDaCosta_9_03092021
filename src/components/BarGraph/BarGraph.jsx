@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { getActivity } from '../../data/API';
+import API from '../../data/API';
+import Format from '../../data/Format';
+
 import {
     BarChart,
     Bar,
@@ -32,11 +34,10 @@ function BarGraph(props) {
     };
 
     useEffect(() => {
-        getActivity(selectedUser.id)
+        API.getActivity(selectedUser.id)
             .then((response) => {
-                response.data.data.map;
                 setActivity(
-                    response.data.data.sessions.map((activity, i) => {
+                    Format.activityFormat(response).map((activity, i) => {
                         return { ...activity, index: i + 1 };
                     })
                 );

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { getSessionDuration } from '../../data/API';
+import API from '../../data/API';
+import Format from '../../data/Format';
 import { LineChart, Line, XAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 
 function LineGraph(props) {
@@ -36,9 +37,9 @@ function LineGraph(props) {
     };
 
     useEffect(() => {
-        getSessionDuration(selectedUser.id)
+        API.getSessionDuration(selectedUser.id)
             .then((response) => {
-                setDuration(response.data.data.sessions);
+                setDuration(Format.durationFormat(response));
             })
             .catch((error) => {
                 console.log(error);
@@ -73,7 +74,7 @@ function LineGraph(props) {
                             axisLine={false}
                             tickLine={false}
                             stroke="white"
-                            padding={{ left: 15, right: 15, top: 20 }}
+                            padding={{ left: 15, right: 15 }}
                         />
                         <Tooltip content={CustomTooltip} />
                         <Line
