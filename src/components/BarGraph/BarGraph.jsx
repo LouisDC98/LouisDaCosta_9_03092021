@@ -33,6 +33,12 @@ function BarGraph(props) {
         return null;
     };
 
+    const CustomLegend = (value) => {
+        const style = { color: '#74798C', fontSize: '14px' };
+
+        return <span style={style}>{value}</span>;
+    };
+
     useEffect(() => {
         API.getActivity(selectedUser.id)
             .then((response) => {
@@ -93,6 +99,7 @@ function BarGraph(props) {
                             wrapperStyle={{
                                 paddingBottom: '30px'
                             }}
+                            formatter={CustomLegend}
                         />
                         <Tooltip content={<CustomTooltip />} />
                         <Bar

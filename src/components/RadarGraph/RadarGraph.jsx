@@ -36,13 +36,14 @@ function RadarGraph(props) {
         return (
             <RadarGraphShape>
                 <ResponsiveContainer width="100%" height="90%">
-                    <RadarChart cx={'center'} cy={'center'} outerRadius={80} data={intensity.data}>
+                    <RadarChart cx={'center'} cy={'center'} outerRadius={75} data={intensity.data}>
                         <PolarGrid radialLines={false} />
                         <PolarAngleAxis
                             tickFormatter={CustomPolarAngleAxis}
                             dataKey="kind"
                             stroke="white"
                             tickLine={false}
+                            fontSize={12}
                         />
                         <Radar dataKey="value" fill="red" fillOpacity={0.7} />
                     </RadarChart>
