@@ -26,7 +26,7 @@ function SideNav() {
 const SideNavBackground = styled.div`
     background-color: black;
     width: 117px;
-    height: 100vh;
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
