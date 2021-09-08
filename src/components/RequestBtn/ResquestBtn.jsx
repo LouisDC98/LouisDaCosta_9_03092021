@@ -25,8 +25,9 @@ function ResquestBtn(props) {
 const BtnUser = styled.button`
     background-color: black;
     color: white;
-    border: 1px solid white;
+    border: none;
     height: 20px;
+    width: 117px;
 `;
 
 export default ResquestBtn;

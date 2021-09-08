@@ -36,10 +36,10 @@ function HomePage() {
     } else {
         return (
             <HomePageShape>
-                <div>
-                    <SideNav />
+                <HomePageSide>
                     <ResquestBtn dataUser={userSelect} selectedUser={setUserSelect} />
-                </div>
+                    <SideNav />
+                </HomePageSide>
 
                 <HomePageMainShape>
                     <Welcome user={userSelect} />
@@ -69,6 +69,10 @@ const HomePageShape = styled.div`
     display: flex;
     justify-content: flex-start;
     width: 100%;
+`;
+
+const HomePageSide = styled.div`
+    margin-top: -5px;
 `;
 
 const HomePageMainShape = styled.main`
