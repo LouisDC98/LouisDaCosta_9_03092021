@@ -5,13 +5,16 @@ import { RadialBarChart, RadialBar, ResponsiveContainer } from 'recharts';
 
 function Score(props) {
     const { score } = props;
+    /* Put user's score in pourcent */
     const scorePourcent = score * 100;
 
+    /* Datas for the graph */
     const data = [
         { uv: scorePourcent, fill: 'red' },
         { uv: 100, fill: '#FBFBFB' }
     ];
 
+    /* Return a custom radialBarGraph */
     return (
         <ScoreShape>
             <ScoreLegend>Score</ScoreLegend>

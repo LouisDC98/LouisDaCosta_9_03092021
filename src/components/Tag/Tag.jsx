@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import './Tag.css';
 import energy from '../../img/energy.svg';
 import protein from '../../img/protein.svg';
 import lipid from '../../img/lipid.svg';
@@ -9,41 +8,44 @@ import glucide from '../../img/glucide.svg';
 function Tag(props) {
     const { userData, data } = props;
 
+    /* Custom parameters */
     let imgData;
     let valueData;
     let textData;
     let colorTag;
 
+    /* For each category a tag is created with custom parameters */
     switch (data) {
         case 'calorieCount':
             imgData = energy;
             valueData = userData.calorieCount + 'kCal';
             textData = 'Calories';
-            colorTag = 'colorTag--calorie';
+            colorTag = '#FF000007';
             break;
         case 'proteinCount':
             imgData = protein;
             valueData = userData.proteinCount + 'g';
             textData = 'Proteines';
-            colorTag = 'colorTag--protein';
+            colorTag = '#4AB8FF10';
             break;
         case 'carbohydrateCount':
             imgData = glucide;
             valueData = userData.carbohydrateCount + 'g';
             textData = 'Glucides';
-            colorTag = 'colorTag--glucide';
+            colorTag = '#F9CE2310';
             break;
         case 'lipidCount':
             imgData = lipid;
             valueData = userData.lipidCount + 'g';
             textData = 'Lipides';
-            colorTag = 'colorTag--lipid';
+            colorTag = '#FD518110';
             break;
     }
 
+    /* Return a complete tag in each case */
     return (
         <TagShape>
-            <TagImg className={colorTag}>
+            <TagImg background={colorTag}>
                 <TagIcon src={imgData}></TagIcon>
             </TagImg>
             <div>
@@ -71,6 +73,7 @@ const TagImg = styled.div`
     width: 60px;
     border-radius: 5px;
     margin-right: 30px;
+    background-color: ${(props) => props.background};
 `;
 
 const TagIcon = styled.img`

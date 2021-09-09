@@ -29,6 +29,7 @@ function HomePage() {
             });
     }, []);
 
+    /* If loading is true then return div Loading else if error is true the return div error else return homepage */
     if (loading) {
         return <div>Loading</div>;
     } else if (error) {

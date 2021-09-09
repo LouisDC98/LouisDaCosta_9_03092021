@@ -5,6 +5,7 @@ import API from '../../data/API';
 function ResquestBtn(props) {
     const { dataUser, selectedUser } = props;
 
+    /* If user.id is 12 then swap to user.id 18 else user.id 12 */
     const getUser = () => {
         let id = 0;
         if (dataUser.id === 12) {
@@ -14,7 +15,6 @@ function ResquestBtn(props) {
         }
 
         API.getUserById(id).then((response) => {
-            console.log(response.data.data);
             selectedUser(response.data.data);
         });
     };

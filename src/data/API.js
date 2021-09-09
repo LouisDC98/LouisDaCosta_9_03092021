@@ -2,6 +2,7 @@ import axios from 'axios';
 
 axios.defaults.baseURL = 'http://localhost:3000';
 
+/* Each fucntion get datas in API */
 class API {
     static async getInitialUser() {
         return axios.get(`/user/${12}`);

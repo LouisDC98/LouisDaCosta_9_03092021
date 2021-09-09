@@ -1,6 +1,6 @@
+/* Each function sanitize the datas */
 class Format {
     static durationFormat(arg) {
-        console.log('toto');
         return arg.data.data.sessions;
     }
     static activityFormat(arg) {

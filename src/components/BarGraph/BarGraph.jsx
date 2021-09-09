@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import API from '../../data/API';
 import Format from '../../data/Format';
-
 import {
     BarChart,
     Bar,
@@ -14,12 +13,14 @@ import {
     Legend
 } from 'recharts';
 
+/* Get datas to draw a BarGraph */
 function BarGraph(props) {
     const { selectedUser } = props;
     const [activity, setActivity] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
 
+    /* Custom the tooltip to display particular values */
     const CustomTooltip = ({ active, payload }) => {
         if (active && payload && payload.length) {
             return (
@@ -29,10 +30,10 @@ function BarGraph(props) {
                 </BarGraphToolTip>
             );
         }
-
         return null;
     };
 
+    /* Custom the style legend */
     const CustomLegend = (value) => {
         const style = { color: '#74798C', fontSize: '14px' };
 
@@ -57,6 +58,7 @@ function BarGraph(props) {
             });
     }, [selectedUser]);
 
+    /* If loading is true then return div Loading else if error is true the return div error else return graph */
     if (loading) {
         return <div>Loading</div>;
     } else if (error) {
@@ -79,6 +81,7 @@ function BarGraph(props) {
                         <CartesianGrid strokeDasharray="3 3" vertical={false} />
                         <XAxis dataKey={'index'} tickLine={false} />
                         <YAxis
+                            tickCount={3}
                             dataKey="calories"
                             axisLine={false}
                             tickLine={false}

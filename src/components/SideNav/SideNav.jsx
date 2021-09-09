@@ -6,20 +6,21 @@ import bike from '../../img/bike.svg';
 import bodybuilding from '../../img/bodybuilding.svg';
 
 function SideNav() {
+    /* arrayImg is an array with alias of pictures */
     const arrayImg = [yoga, swim, bike, bodybuilding];
+
+    /* Return a nav bar with logos for each element on arrayImg a new link is created  */
     return (
-        <React.Fragment>
-            <SideNavBackground>
-                <SideNavNav>
-                    {arrayImg.map((data) => (
-                        <SideNavLink key={data}>
-                            <SideNavImg src={data}></SideNavImg>
-                        </SideNavLink>
-                    ))}
-                </SideNavNav>
-                <SideNavText>Copyright, SportSee 2020</SideNavText>
-            </SideNavBackground>
-        </React.Fragment>
+        <SideNavBackground>
+            <SideNavNav>
+                {arrayImg.map((data) => (
+                    <SideNavLink key={data}>
+                        <SideNavImg src={data}></SideNavImg>
+                    </SideNavLink>
+                ))}
+            </SideNavNav>
+            <SideNavText>Copyright, SportSee 2020</SideNavText>
+        </SideNavBackground>
     );
 }
 
