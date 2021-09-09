@@ -2,14 +2,24 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import API from '../../data/API';
 import Format from '../../data/Format';
-import { LineChart, Line, XAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
+import {
+    LineChart,
+    Line,
+    XAxis,
+    YAxis,
+    CartesianGrid,
+    Tooltip,
+    ResponsiveContainer
+} from 'recharts';
 
+/* Get datas to draw a LineGraph */
 function LineGraph(props) {
     const { selectedUser } = props;
     const [duration, setDuration] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
 
+    /* Datas usefull for CustomXaxis function */
     const week = {
         1: 'L',
         2: 'M',
@@ -20,10 +30,12 @@ function LineGraph(props) {
         7: 'D'
     };
 
+    /* Custom the X axis show week array elements */
     const CustomXaxis = (tick) => {
         return week[tick];
     };
 
+    /* Custom the tooltip to display duration value */
     const CustomTooltip = ({ active, payload }) => {
         if (active && payload && payload.length) {
             return (
@@ -32,7 +44,6 @@ function LineGraph(props) {
                 </LineGraphToolTip>
             );
         }
-
         return null;
     };
 
@@ -50,6 +61,7 @@ function LineGraph(props) {
             });
     }, [selectedUser]);
 
+    /* If loading is true then return div Loading else if error is true the return div error else return graph */
     if (loading) {
         return <div>Loading</div>;
     } else if (error) {
@@ -58,14 +70,7 @@ function LineGraph(props) {
         return (
             <LineGraphShape>
                 <ResponsiveContainer width="100%" height="100%">
-                    <LineChart
-                        width={50}
-                        height={30}
-                        data={duration}
-                        margin={{
-                            top: 100,
-                            bottom: 75
-                        }}>
+                    <LineChart width="100%" height={30} data={duration} margin={{ left: -65 }}>
                         <CartesianGrid strokeDasharray="3 3" vertical={false} horizontal={false} />
                         <XAxis
                             tickFormatter={CustomXaxis}
@@ -74,7 +79,13 @@ function LineGraph(props) {
                             axisLine={false}
                             tickLine={false}
                             stroke="white"
-                            padding={{ left: 15, right: 15 }}
+                            padding={{ left: 15, right: 10 }}
+                        />
+                        <YAxis
+                            domain={['dataMin-25', 'dataMax+40']}
+                            axisLine={false}
+                            tick={false}
+                            label={{ value: 'index', position: 'insideLeft', dy: -150 }}
                         />
                         <Tooltip content={CustomTooltip} />
                         <Line
