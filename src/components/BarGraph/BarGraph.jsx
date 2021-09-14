@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import API from '../../data/API';
 import Format from '../../data/Format';
 import {
@@ -123,6 +124,10 @@ function BarGraph(props) {
         );
     }
 }
+
+BarGraph.propTypes = {
+    selectedUser: PropTypes.object.isRequired
+};
 
 const BarGraphShape = styled.div`
     background-color: #fbfbfb;

@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import API from '../../data/API';
 
 function ResquestBtn(props) {
@@ -21,6 +22,11 @@ function ResquestBtn(props) {
 
     return <BtnUser onClick={getUser}>Change user</BtnUser>;
 }
+
+ResquestBtn.propTypes = {
+    dataUser: PropTypes.object.isRequired,
+    selectedUser: PropTypes.func.isRequired
+};
 
 const BtnUser = styled.button`
     background-color: black;

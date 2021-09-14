@@ -1,6 +1,7 @@
 import React from 'react';
 import './Score.css';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import { RadialBarChart, RadialBar, ResponsiveContainer } from 'recharts';
 
 function Score(props) {
@@ -46,6 +47,10 @@ function Score(props) {
         </ScoreShape>
     );
 }
+
+Score.propTypes = {
+    score: PropTypes.number.isRequired
+};
 
 const ScoreShape = styled.div`
     background-color: #fbfbfb;

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import API from '../../data/API';
 import Format from '../../data/Format';
 import {
@@ -102,6 +103,10 @@ function LineGraph(props) {
         );
     }
 }
+
+LineGraph.propTypes = {
+    selectedUser: PropTypes.object.isRequired
+};
 
 const LineGraphShape = styled.div`
     width: 258px;
