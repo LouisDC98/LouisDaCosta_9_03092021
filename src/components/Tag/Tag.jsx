@@ -6,7 +6,7 @@ import lipid from '../../img/lipid.svg';
 import glucide from '../../img/glucide.svg';
 
 function Tag(props) {
-    const { userData, data } = props;
+    const { countCategory, countValue } = props;
 
     /* Custom parameters */
     let imgData;
@@ -15,27 +15,28 @@ function Tag(props) {
     let colorTag;
 
     /* Determine for each category a set of specific value to display */
+    switch (countCategory) {
         case 'calorieCount':
             imgData = energy;
-            valueData = userData.calorieCount + 'kCal';
+            valueData = countValue / 1000 + 'kCal';
             textData = 'Calories';
             colorTag = '#FF000007';
             break;
         case 'proteinCount':
             imgData = protein;
-            valueData = userData.proteinCount + 'g';
+            valueData = countValue + 'g';
             textData = 'Proteines';
             colorTag = '#4AB8FF10';
             break;
         case 'carbohydrateCount':
             imgData = glucide;
-            valueData = userData.carbohydrateCount + 'g';
+            valueData = countValue + 'g';
             textData = 'Glucides';
             colorTag = '#F9CE2310';
             break;
         case 'lipidCount':
             imgData = lipid;
-            valueData = userData.lipidCount + 'g';
+            valueData = countValue + 'g';
             textData = 'Lipides';
             colorTag = '#FD518110';
             break;

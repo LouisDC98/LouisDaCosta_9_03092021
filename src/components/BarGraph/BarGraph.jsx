@@ -20,26 +20,6 @@ function BarGraph(props) {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
 
-    /* Format tooltip to display particular values */
-    const CustomTooltip = ({ active, payload }) => {
-        if (active && payload && payload.length) {
-            return (
-                <BarGraphToolTip>
-                    <p>{`${payload[0].value}kg`}</p>
-                    <p>{`${payload[1].value}kCal`}</p>
-                </BarGraphToolTip>
-            );
-        }
-        return null;
-    };
-
-    /* Format legend style */
-    const CustomLegend = (value) => {
-        const style = { color: '#74798C', fontSize: '14px' };
-
-        return <span style={style}>{value}</span>;
-    };
-
     useEffect(() => {
         API.getActivity(selectedUser.id)
             .then((response) => {
@@ -57,6 +37,26 @@ function BarGraph(props) {
                 setLoading(false);
             });
     }, [selectedUser]);
+
+    /* Format tooltip to display particular values */
+    const CustomTooltip = ({ active, payload }) => {
+        if (active && payload && payload.length) {
+            return (
+                <BarGraphToolTip>
+                    <p>{`${payload[0].value}kg`}</p>
+                    <p>{`${payload[1].value / 1000}kCal`}</p>
+                </BarGraphToolTip>
+            );
+        }
+        return null;
+    };
+
+    /* Format legend style */
+    const CustomLegend = (value) => {
+        const style = { color: '#74798C', fontSize: '14px' };
+
+        return <span style={style}>{value}</span>;
+    };
 
     /* If loading is true then return div Loading else if error is true the return div error else return graph */
     if (loading) {

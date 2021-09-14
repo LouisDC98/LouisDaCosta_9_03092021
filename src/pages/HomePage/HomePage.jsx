@@ -55,8 +55,12 @@ function HomePage() {
                         </HomePageMainGraph>
 
                         <div>
-                            {Object.keys(userSelect.keyData).map((data) => (
-                                <Tag userData={userSelect.keyData} key={data} data={data} />
+                            {Object.keys(userSelect.keyData).map((countCategory) => (
+                                <Tag
+                                    countValue={userSelect.keyData[countCategory]}
+                                    key={countCategory}
+                                    countCategory={countCategory}
+                                />
                             ))}
                         </div>
                     </HomePageMainBlock>
