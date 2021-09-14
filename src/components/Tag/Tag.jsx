@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import energy from '../../img/energy.svg';
 import protein from '../../img/protein.svg';
 import lipid from '../../img/lipid.svg';
@@ -55,6 +56,11 @@ function Tag(props) {
         </TagShape>
     );
 }
+
+Tag.propTypes = {
+    countCategory: PropTypes.string.isRequired,
+    countValue: PropTypes.number.isRequired
+};
 
 const TagShape = styled.div`
     display: flex;

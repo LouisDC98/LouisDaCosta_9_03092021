@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 function Welcome(props) {
     const { user } = props;
@@ -23,6 +24,10 @@ function Welcome(props) {
         </WelcomeShape>
     );
 }
+
+Welcome.propTypes = {
+    user: PropTypes.object.isRequired
+};
 
 const WelcomeShape = styled.div`
     height: 150px;

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import { Radar, RadarChart, PolarGrid, PolarAngleAxis, ResponsiveContainer } from 'recharts';
 import API from '../../data/API';
 import Format from '../../data/Format';
@@ -55,6 +56,10 @@ function RadarGraph(props) {
         );
     }
 }
+
+RadarGraph.propTypes = {
+    selectedUser: PropTypes.object.isRequired
+};
 
 const RadarGraphShape = styled.div`
     display: flex;
