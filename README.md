@@ -34,9 +34,9 @@ This repo contains all the source code to run the micro API for the sports analy
 - The `yarn` command will allow you to install the dependencies.
 - The `yarn dev` command will allow you to run the micro API.
 
-## 4. Endpoints
+## 3. Endpoints
 
-### 4.1 Possible endpoints
+### 3.1 Possible endpoints
 
 This project includes four endpoints that you will be able to use: 
 
