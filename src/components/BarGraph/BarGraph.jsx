@@ -20,7 +20,7 @@ function BarGraph(props) {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
 
-    /* Custom the tooltip to display particular values */
+    /* Format tooltip to display particular values */
     const CustomTooltip = ({ active, payload }) => {
         if (active && payload && payload.length) {
             return (
@@ -33,7 +33,7 @@ function BarGraph(props) {
         return null;
     };
 
-    /* Custom the style legend */
+    /* Format legend style */
     const CustomLegend = (value) => {
         const style = { color: '#74798C', fontSize: '14px' };
 

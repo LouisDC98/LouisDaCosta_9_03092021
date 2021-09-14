@@ -19,7 +19,7 @@ function LineGraph(props) {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
 
-    /* Datas usefull for CustomXaxis function */
+    /* LUT between index and french first day letter */
     const week = {
         1: 'L',
         2: 'M',
@@ -30,12 +30,12 @@ function LineGraph(props) {
         7: 'D'
     };
 
-    /* Custom the X axis show week array elements */
+    /* Format X axis label to display first day letter instead of index */
     const CustomXaxis = (tick) => {
         return week[tick];
     };
 
-    /* Custom the tooltip to display duration value */
+    /* Format tooltip to display duration value */
     const CustomTooltip = ({ active, payload }) => {
         if (active && payload && payload.length) {
             return (
