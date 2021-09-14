@@ -30,6 +30,20 @@ function LineGraph(props) {
         7: 'D'
     };
 
+    useEffect(() => {
+        API.getSessionDuration(selectedUser.id)
+            .then((response) => {
+                setDuration(Format.durationFormat(response));
+            })
+            .catch((error) => {
+                console.log(error);
+                setError(true);
+            })
+            .finally(() => {
+                setLoading(false);
+            });
+    }, [selectedUser]);
+
     /* Format X axis label to display first day letter instead of index */
     const CustomXaxis = (tick) => {
         return week[tick];
@@ -46,20 +60,6 @@ function LineGraph(props) {
         }
         return null;
     };
-
-    useEffect(() => {
-        API.getSessionDuration(selectedUser.id)
-            .then((response) => {
-                setDuration(Format.durationFormat(response));
-            })
-            .catch((error) => {
-                console.log(error);
-                setError(true);
-            })
-            .finally(() => {
-                setLoading(false);
-            });
-    }, [selectedUser]);
 
     /* If loading is true then return div Loading else if error is true the return div error else return graph */
     if (loading) {

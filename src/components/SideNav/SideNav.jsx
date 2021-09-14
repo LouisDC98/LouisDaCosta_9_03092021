@@ -36,6 +36,7 @@ const SideNavBackground = styled.div`
 
 const SideNavNav = styled.nav`
     margin-top: 100px;
+    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
