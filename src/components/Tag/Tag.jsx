@@ -14,8 +14,7 @@ function Tag(props) {
     let textData;
     let colorTag;
 
-    /* For each category a tag is created with custom parameters */
-    switch (data) {
+    /* Determine for each category a set of specific value to display */
         case 'calorieCount':
             imgData = energy;
             valueData = userData.calorieCount + 'kCal';
