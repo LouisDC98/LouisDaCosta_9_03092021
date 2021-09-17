@@ -14,7 +14,10 @@ import {
     Legend
 } from 'recharts';
 
-/* Get datas to draw a BarGraph */
+/**
+ * @component
+ * @returns BarGraph component depending of activity datas
+ */
 function BarGraph(props) {
     const { selectedUser } = props;
     const [activity, setActivity] = useState(null);
@@ -39,7 +42,10 @@ function BarGraph(props) {
             });
     }, [selectedUser]);
 
-    /* Format tooltip to display particular values */
+    /**
+     * Format tooltip to display particular values
+     * @returns Formated div
+     */
     const CustomTooltip = ({ active, payload }) => {
         if (active && payload && payload.length) {
             return (
@@ -52,14 +58,16 @@ function BarGraph(props) {
         return null;
     };
 
-    /* Format legend style */
+    /**
+     * Format legend style
+     * @returns Formated span
+     */
     const CustomLegend = (value) => {
         const style = { color: '#74798C', fontSize: '14px' };
 
         return <span style={style}>{value}</span>;
     };
 
-    /* If loading is true then return div Loading else if error is true the return div error else return graph */
     if (loading) {
         return <div>Loading</div>;
     } else if (error) {
@@ -126,6 +134,9 @@ function BarGraph(props) {
 }
 
 BarGraph.propTypes = {
+    /**
+     * User selected
+     */
     selectedUser: PropTypes.object.isRequired
 };
 

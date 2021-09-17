@@ -5,6 +5,10 @@ import swim from '../../img/swim.svg';
 import bike from '../../img/bike.svg';
 import bodybuilding from '../../img/bodybuilding.svg';
 
+/**
+ * @component
+ * @returns SideBar with NavLink
+ */
 function SideNav() {
     /* arrayImg is an array with alias of pictures */
     const arrayImg = [yoga, swim, bike, bodybuilding];

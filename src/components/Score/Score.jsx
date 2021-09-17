@@ -4,6 +4,10 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { RadialBarChart, RadialBar, ResponsiveContainer } from 'recharts';
 
+/**
+ * @component
+ * @returns A custom radialBarGraph depending of user's score
+ */
 function Score(props) {
     const { score } = props;
     /* Put user's score in pourcent */
@@ -49,6 +53,9 @@ function Score(props) {
 }
 
 Score.propTypes = {
+    /**
+     * User's score
+     */
     score: PropTypes.number.isRequired
 };
 

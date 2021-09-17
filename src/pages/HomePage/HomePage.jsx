@@ -10,6 +10,10 @@ import LineGraph from '../../components/LineGraph/LineGraph';
 import RadarGraph from '../../components/RadarGraph/RadarGraph';
 import API from '../../data/API';
 
+/**
+ * @component
+ * @returns HomePage with many components
+ */
 function HomePage() {
     const [userSelect, setUserSelect] = useState(null);
     const [loading, setLoading] = useState(true);
@@ -29,7 +33,6 @@ function HomePage() {
             });
     }, []);
 
-    /* If loading is true then return div Loading else if error is true the return div error else return homepage */
     if (loading) {
         return <div>Loading</div>;
     } else if (error) {

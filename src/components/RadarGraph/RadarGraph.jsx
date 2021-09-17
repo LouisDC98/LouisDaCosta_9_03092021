@@ -5,7 +5,10 @@ import { Radar, RadarChart, PolarGrid, PolarAngleAxis, ResponsiveContainer } fro
 import API from '../../data/API';
 import Format from '../../data/Format';
 
-/* Get datas to draw a RadarGraph */
+/**
+ * @component
+ * @returns RadarGraph component depending of intensity datas
+ */
 function RadarGraph(props) {
     const { selectedUser } = props;
     const [intensity, setIntensity] = useState(null);
@@ -26,12 +29,14 @@ function RadarGraph(props) {
             });
     }, [selectedUser]);
 
-    /* Put first lettre of each tick in uppercase, speed becomes Speed */
+    /**
+     * Put first letter of each tick in uppercase, speed becomes Speed
+     * @returns user activity intensity sessions
+     */
     const CustomPolarAngleAxis = (tick) => {
         return intensity.kind[tick].charAt(0).toUpperCase() + intensity.kind[tick].slice(1);
     };
 
-    /* If loading is true then return div Loading else if error is true the return div error else return graph */
     if (loading) {
         return <div>Loading</div>;
     } else if (error) {
@@ -58,6 +63,9 @@ function RadarGraph(props) {
 }
 
 RadarGraph.propTypes = {
+    /**
+     * User selected
+     */
     selectedUser: PropTypes.object.isRequired
 };
 
