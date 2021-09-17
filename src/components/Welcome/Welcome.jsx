@@ -2,6 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
+/**
+ * @component
+ * @returns Custom welcome with firstName and a congratulation message
+ */
 function Welcome(props) {
     const { user } = props;
 
@@ -14,7 +18,6 @@ function Welcome(props) {
         message = 'Félicitation ! Vous avez explosé vos objectifs hier 👏';
     }
 
-    /* Return a custom welcome with firstName and a congratulation message */
     return (
         <WelcomeShape>
             <WelcomeTitle>
@@ -26,6 +29,9 @@ function Welcome(props) {
 }
 
 Welcome.propTypes = {
+    /**
+     * User selected
+     */
     user: PropTypes.object.isRequired
 };
 

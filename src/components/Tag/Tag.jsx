@@ -6,6 +6,10 @@ import protein from '../../img/protein.svg';
 import lipid from '../../img/lipid.svg';
 import glucide from '../../img/glucide.svg';
 
+/**
+ * @component
+ * @returns Create a custom card depending of datas
+ */
 function Tag(props) {
     const { countCategory, countValue } = props;
 
@@ -58,7 +62,13 @@ function Tag(props) {
 }
 
 Tag.propTypes = {
+    /**
+     * Category of count
+     */
     countCategory: PropTypes.string.isRequired,
+    /**
+     * Value of the count's category
+     */
     countValue: PropTypes.number.isRequired
 };
 

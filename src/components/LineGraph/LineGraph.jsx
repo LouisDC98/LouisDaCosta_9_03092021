@@ -13,7 +13,10 @@ import {
     ResponsiveContainer
 } from 'recharts';
 
-/* Get datas to draw a LineGraph */
+/**
+ * @component
+ * @returns LineGraph component depending of activity duration datas
+ */
 function LineGraph(props) {
     const { selectedUser } = props;
     const [duration, setDuration] = useState(null);
@@ -45,12 +48,18 @@ function LineGraph(props) {
             });
     }, [selectedUser]);
 
-    /* Format X axis label to display first day letter instead of index */
+    /**
+     * Format X axis label to display first day letter of week array instead of index
+     * @returns Formated Xaxis
+     */
     const CustomXaxis = (tick) => {
         return week[tick];
     };
 
-    /* Format tooltip to display duration value */
+    /**
+     * Format tooltip to display duration value
+     * @returns Formated div
+     */
     const CustomTooltip = ({ active, payload }) => {
         if (active && payload && payload.length) {
             return (
@@ -62,7 +71,6 @@ function LineGraph(props) {
         return null;
     };
 
-    /* If loading is true then return div Loading else if error is true the return div error else return graph */
     if (loading) {
         return <div>Loading</div>;
     } else if (error) {
@@ -105,6 +113,9 @@ function LineGraph(props) {
 }
 
 LineGraph.propTypes = {
+    /**
+     * User selected
+     */
     selectedUser: PropTypes.object.isRequired
 };
 

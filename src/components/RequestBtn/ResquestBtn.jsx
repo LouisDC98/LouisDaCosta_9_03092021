@@ -3,10 +3,16 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import API from '../../data/API';
 
+/**
+ * @component
+ * @returns Button to change user
+ */
 function ResquestBtn(props) {
     const { dataUser, selectedUser } = props;
 
-    /* If user.id is 12 then swap to user.id 18 else user.id 12 */
+    /**
+     * Swap between 2 users
+     */
     const getUser = () => {
         let id = 0;
         if (dataUser.id === 12) {
@@ -24,7 +30,13 @@ function ResquestBtn(props) {
 }
 
 ResquestBtn.propTypes = {
+    /**
+     * Users data
+     */
     dataUser: PropTypes.object.isRequired,
+    /**
+     * User selected
+     */
     selectedUser: PropTypes.func.isRequired
 };
 
