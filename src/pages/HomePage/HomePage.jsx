@@ -91,6 +91,10 @@ const HomePageMainShape = styled.main`
 const HomePageMainBlock = styled.div`
     display: flex;
     justify-content: space-between;
+    flex-wrap: nowrap;
+    @media (max-width: 1024px) {
+        flex-wrap: wrap;
+    }
 `;
 
 const HomePageMainGraph = styled.div`
