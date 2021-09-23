@@ -77,6 +77,9 @@ const RadarGraphShape = styled.div`
     width: 258px;
     height: 263px;
     border-radius: 5px;
+    @media (max-width: 1024px) {
+        width: 35%;
+    }
 `;
 
 export default RadarGraph;

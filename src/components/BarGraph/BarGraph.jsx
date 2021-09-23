@@ -147,6 +147,9 @@ const BarGraphShape = styled.div`
     position: relative;
     padding: 20px 0 0 0;
     border-radius: 5px;
+    @media (max-width: 1024px) {
+        width: 100%;
+    }
 `;
 
 const BarGraphTitle = styled.p`

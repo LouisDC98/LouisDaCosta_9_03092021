@@ -125,6 +125,9 @@ const LineGraphShape = styled.div`
     border-radius: 5px;
     background: linear-gradient(to right, #ff0000 75%, #df0000 25%);
     position: relative;
+    @media (max-width: 1024px) {
+        width: 30%;
+    }
 `;
 
 const LineGraphToolTip = styled.div`

@@ -57,7 +57,7 @@ function HomePage() {
                             </HomePageLittleGraph>
                         </HomePageMainGraph>
 
-                        <div>
+                        <HomePageTags>
                             {Object.keys(userSelect.keyData).map((countCategory) => (
                                 <Tag
                                     countValue={userSelect.keyData[countCategory]}
@@ -65,7 +65,7 @@ function HomePage() {
                                     countCategory={countCategory}
                                 />
                             ))}
-                        </div>
+                        </HomePageTags>
                     </HomePageMainBlock>
                 </HomePageMainShape>
             </HomePageShape>
@@ -86,6 +86,9 @@ const HomePageSide = styled.div`
 const HomePageMainShape = styled.main`
     width: 100%;
     padding: 0 50px;
+    @media (max-width: 1024px) {
+        padding: 0;
+    }
 `;
 
 const HomePageMainBlock = styled.div`
@@ -106,6 +109,16 @@ const HomePageLittleGraph = styled.div`
     justify-content: space-between;
     margin: 10px 0;
     width: 835px;
+    @media (max-width: 1024px) {
+        width: 100%;
+        justify-content: space-between;
+    }
+`;
+
+const HomePageTags = styled.div`
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
 `;
 
 export default HomePage;
