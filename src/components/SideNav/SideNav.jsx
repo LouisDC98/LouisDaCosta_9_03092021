@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-import yoga from '../../img/yoga.svg';
-import swim from '../../img/swim.svg';
-import bike from '../../img/bike.svg';
-import bodybuilding from '../../img/bodybuilding.svg';
+import yoga from 'img/yoga.svg';
+import swim from 'img/swim.svg';
+import bike from 'img/bike.svg';
+import bodybuilding from 'img/bodybuilding.svg';
 
 /**
  * @component
