@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import energy from '../../img/energy.svg';
-import protein from '../../img/protein.svg';
-import lipid from '../../img/lipid.svg';
-import glucide from '../../img/glucide.svg';
+import energy from 'img/energy.svg';
+import protein from 'img/protein.svg';
+import lipid from 'img/lipid.svg';
+import glucide from 'img/glucide.svg';
 
 /**
  * @component

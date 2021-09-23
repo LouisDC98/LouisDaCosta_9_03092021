@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import API from '../../data/API';
-import Format from '../../data/Format';
+import API from 'data/API';
+import Format from 'data/Format';
 import {
     BarChart,
     Bar,

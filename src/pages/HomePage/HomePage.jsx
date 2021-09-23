@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import SideNav from '../../components/SideNav/SideNav';
-import ResquestBtn from '../../components/RequestBtn/ResquestBtn';
-import Welcome from '../../components/Welcome/Welcome';
-import Tag from '../../components/Tag/Tag';
-import Score from '../../components/Score/Score';
-import BarGraph from '../../components/BarGraph/BarGraph';
-import LineGraph from '../../components/LineGraph/LineGraph';
-import RadarGraph from '../../components/RadarGraph/RadarGraph';
-import API from '../../data/API';
+import SideNav from 'components/SideNav/SideNav';
+import ResquestBtn from 'components/RequestBtn/ResquestBtn';
+import Welcome from 'components/Welcome/Welcome';
+import Tag from 'components/Tag/Tag';
+import Score from 'components/Score/Score';
+import BarGraph from 'components/BarGraph/BarGraph';
+import LineGraph from 'components/LineGraph/LineGraph';
+import RadarGraph from 'components/RadarGraph/RadarGraph';
+import API from 'data/API';
 
 /**
  * @component
