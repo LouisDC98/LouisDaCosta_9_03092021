@@ -64,6 +64,9 @@ const ScoreShape = styled.div`
     width: 258px;
     height: 263px;
     border-radius: 5px;
+    @media (max-width: 1024px) {
+        width: 30%;
+    }
 `;
 
 const ScoreLegend = styled.p`
